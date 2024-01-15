@@ -37,23 +37,23 @@ The application will start, and you can access it at ```http://localhost:8080```
 
 ## API Endpoints
 ### Health Check
+Description: Check the health status of the application.
   - Endpoint: /api/health
-  - Method: GET
-  - Description: Check the health status of the application.
+  - Method: GET  
   - Response:
 
     ```
     OK
     ```
 ### Generate QR Code
+Description: Generate a QR code based on the provided parameters.
    - Endpoint: /api/qrcode
    - Method: GET
    - Parameters:
        - contents (required): The data to be encoded in the QR code.
        - size (optional): The size of the QR code (default: 250 pixels).
        - correction (optional): Error correction level (L, M, Q, H - default: L).
-       - type (optional): Image type (png, jpeg, gif - default: png).
-       - Description: Generate a QR code based on the provided parameters.
+       - type (optional): Image type (png, jpeg, gif - default: png).      
    - Response: QR code image in the specified format.
 
      ```
