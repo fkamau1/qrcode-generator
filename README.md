@@ -66,8 +66,8 @@ The application will start, and you can access it at ```http://localhost:8080```
    - The default configuration can be modified in the ```application.properties``` file.
 
 ## Dependencies
-  - Spring boot
-  - ZXing Api
+  - [Spring boot](https://spring.io/projects/spring-boot/) 
+  - [ZXing Api](https://github.com/zxing/zxing)
 
 ## License 
   - This project is licensed under the MIT License - see the LICENSE file for details.
