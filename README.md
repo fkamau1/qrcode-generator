@@ -33,7 +33,7 @@ This is a QR code generator application implemented using Spring Boot and the ZX
    ```bash
    java -jar build/libs/qrcode-generator-0.0.1-SNAPSHOT.jar
    ```
-The application will start, and you can access it at ```http://localhost:8080```
+The application will start, and you can access it at ```http://localhost:8080```. You will need the API endpoints below to process requests. 
 
 ## API Endpoints
 ### Health Check
