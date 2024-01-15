@@ -70,5 +70,5 @@ The application will start, and you can access it at ```http://localhost:8080```
   - [ZXing Api](https://github.com/zxing/zxing)
 
 ## License 
-  - This project is licensed under the MIT License - see the LICENSE file for details.
+  - This project is licensed under the MIT License - see the [LICENSE](https://github.com/fkamau1/qrcode-generator/blob/main/LICENSE) file for details.
 
