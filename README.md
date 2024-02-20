@@ -35,6 +35,27 @@ This is a QR code generator application implemented using Spring Boot and the ZX
    ```
 The application will start, and you can access it at ```http://localhost:8080```. You will need the API endpoints below to process requests. 
 
+### Docker
+A copy of this application can also be  pulled from the docker hub:
+1. Install docker
+   
+    ```bash
+   sudo yum install -y docker
+   ```
+
+2. Start docker engine
+
+   ```bash
+   sudo service docker start
+   ```
+   
+3. Create image and run container
+
+    ```bash
+   sudo docker run -d -p 80:8080 fkamau1/aws-qrcode:2.0
+   ```
+  
+
 ## API Endpoints
 ### Health Check
 Description: Check the health status of the application.
