@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+
+    <form id="qrCodeForm">
+        <label for="contents">Text to encode</label>
+        <input type="text" id="contents" name="contents" required>
+        <br>
+
+        <label for="size">Size (optional, default: 250, Min: 150, Max: 350 )</label>
+        <input type="number" id="size" name="size" min="150" max="350" value="250">
+        <br>
+
+        <label for="correction">Correction (optional, default: Low)</label>
+        <select id="correction" name="correction">
+            <option value="L">Low</option>
+            <option value="M">Medium</option>
+            <option value="Q">Quartile</option>
+            <option value="H">High</option>
+        </select>
+        <br>
+
+        <label for="type">Type (optional, default: png)</label>
+        <select id="type" name="type">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="gif">GIF</option>
+        </select>
+        <br>
+
+        <button type="button" onclick="generateQRCode()">Generate QR Code</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function generateQRCode() {
+            const contents = document.getElementById("contents").value;
+            const size = document.getElementById("size").value;
+            const correction = document.getElementById("correction").value;
+            const type = document.getElementById("type").value;
+
+            const url = `/api/qrcode?contents=${encodeURIComponent(contents)}&size=${size}&correction=${correction}&type=${type}`;
+
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const imageUrl = URL.createObjectURL(blob);
+                    document.getElementById("result").innerHTML = `<img src="${imageUrl}" alt="QR Code">`;
+                })
+                .catch(error => {
+                    console.error("Error generating QR Code:", error);
+                    document.getElementById("result").innerHTML = "Error generating QR Code.";
+                });
+        }
+    </script>
+</body>
+</html>
