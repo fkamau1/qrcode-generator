@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Ignore large files within the .terraform directory
+.terraform/
+.terraform/**/*.exe
+.terraform/**/*.zip

@@ -13,6 +13,7 @@ java {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/release' }
 }
 
 dependencies {
@@ -23,6 +24,21 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.google.zxing:core:3.5.2'
 	implementation 'com.google.zxing:javase:3.5.2'
+
+	// Add RestAssured with exclusion of conflicting Groovy dependencies
+	testImplementation('io.rest-assured:rest-assured:4.5.0') {
+		exclude group: 'org.codehaus.groovy', module: 'groovy'
+		exclude group: 'org.codehaus.groovy', module: 'groovy-xml'
+		exclude group: 'org.apache.groovy', module: 'groovy'
+		exclude group: 'org.apache.groovy', module: 'groovy-xml'
+	}
+
+	// Add compatible version of Groovy
+	testImplementation 'org.codehaus.groovy:groovy:3.0.9'
+	testImplementation 'org.codehaus.groovy:groovy-xml:3.0.9'
+
+	// Add Selenium dependencies
+	testImplementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
 }
 
 tasks.named('test') {
